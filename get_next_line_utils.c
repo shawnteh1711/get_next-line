@@ -6,7 +6,7 @@
 /*   By: steh <steh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 11:06:45 by steh              #+#    #+#             */
-/*   Updated: 2022/02/22 18:36:03 by steh             ###   ########.fr       */
+/*   Updated: 2022/02/23 16:56:33 by steh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,17 @@ size_t	ft_strlen(const char *s)
 	while (s[i] != '\0')
 		i++;
 	return (i);
+}
+
+char	*ft_strchr(const char *str, int c)
+{
+	while (*str != '\0')
+	{
+		if ((unsigned char)*str == (unsigned char)c)
+			return ((char *)str);
+		str++;
+	}
+	if (c == 0)
+		return ((char *)str);
+	return (NULL);
 }
