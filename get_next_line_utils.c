@@ -6,11 +6,11 @@
 /*   By: steh <steh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 11:06:45 by steh              #+#    #+#             */
-/*   Updated: 2022/02/23 16:56:33 by steh             ###   ########.fr       */
+/*   Updated: 2022/02/24 14:15:26 by steh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "get_next_line.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -79,15 +79,33 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_strchr(const char *str, int c)
+// char	*ft_strchr(const char *str, int c)
+// {
+// 	while (*str != '\0')
+// 	{
+// 		if ((unsigned char)*str == (unsigned char)c)
+// 			return ((char *)str);
+// 		str++;
+// 	}
+// 	if (c == 0)
+// 		return ((char *)str);
+// 	return (NULL);
+// }
+
+char	*ft_strchr(const char *s, int c)
 {
-	while (*str != '\0')
+	int	i;
+
+	i = 0;
+	if (!s)
+		return (0);
+	if (c == '\0')
+		return ((char *)&s[ft_strlen(s)]);
+	while (s[i] != '\0')
 	{
-		if ((unsigned char)*str == (unsigned char)c)
-			return ((char *)str);
-		str++;
+		if (s[i] == (char) c)
+			return ((char *)&s[i]);
+		i++;
 	}
-	if (c == 0)
-		return ((char *)str);
-	return (NULL);
+	return (0);
 }

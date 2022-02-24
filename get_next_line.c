@@ -6,7 +6,7 @@
 /*   By: steh <steh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 10:17:30 by steh              #+#    #+#             */
-/*   Updated: 2022/02/23 21:17:53 by steh             ###   ########.fr       */
+/*   Updated: 2022/02/24 17:44:10 by steh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,17 @@
 // return NULL if there is nothing to read or an error occured
 char	*get_next_line(int fd)
 {
-	char	*line;
-	char	*save_line;
+	char		*line;
+	char		*save_line;
 
+	save_line = "";
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (-1);
+		return (NULL);
 	save_line = ft_read_and_save(fd, save_line);
 	if (!save_line)
 		return (NULL);
+	line = ft_get_line(save_line);
+	save_line = ft_save(save_line);
 	return (line);
 }
 
@@ -52,4 +55,54 @@ char	*ft_read_and_save(int fd, char *save_line)
 	}
 	free(buffer);
 	return (save_line);
+}
+
+char	*ft_get_line(char *save_line)
+{
+	int		i;
+	char	*s;
+
+	i = 0;
+	s = "";
+	if (!save_line)
+		return (NULL);
+	while (save_line[i] && save_line[i] != '\n')
+		i++;
+	s = (char *)malloc(sizeof(char) * (i + 1));
+	if (!s)
+		return (NULL);
+	i = 0;
+	while (save_line[i] && save_line[i] != '\n')
+	{
+		s[i] = save_line[i];
+		i++;
+	}
+	s[i] = '\0';
+	return (s);
+}
+
+char	*ft_save(char *save_line)
+{
+	int		i;
+	int		j;
+	char	*s;
+
+	i = 0;
+	j = 0;
+	while (save_line[i] && save_line[i] != '\n')
+		i++;
+	if (!save_line[i])
+	{
+		free(save_line);
+		return (NULL);
+	}
+	s = (char *)malloc(sizeof(char) * ft_strlen(save_line) - i + 1);
+	if (!s)
+		return (NULL);
+	i++;
+	while (save_line[i])
+		s[j++] = save_line[i++];
+	s[j] = '\0';
+	free(save_line);
+	return (s);
 }

@@ -14,6 +14,12 @@ $(NAME)		:
 				@echo "$(GREEN) Compiling Files"
 				@$(CC) -o $(NAME) $(CFLAGS) $(SRCS)
 
+test		:
+				gcc main.c -g get_next_line.c get_next_line_utils.c get_next_line.h && ./a.out
+
+test2		:
+				gcc main.c -g get_next_line.c get_next_line_utils.c get_next_line.h
+
 clean		:
 				@echo "$(RED) Temporary Files Deleted"
 				@rm -f $()
