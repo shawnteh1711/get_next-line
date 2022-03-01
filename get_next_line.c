@@ -6,7 +6,7 @@
 /*   By: steh <steh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 10:17:30 by steh              #+#    #+#             */
-/*   Updated: 2022/02/24 17:44:10 by steh             ###   ########.fr       */
+/*   Updated: 2022/03/01 16:41:38 by steh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,17 @@
 char	*get_next_line(int fd)
 {
 	char		*line;
-	char		*save_line;
+	static char	*save_line;
 
 	save_line = "";
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
+		return (0);
 	save_line = ft_read_and_save(fd, save_line);
 	if (!save_line)
 		return (NULL);
 	line = ft_get_line(save_line);
 	save_line = ft_save(save_line);
+	free(save_line);
 	return (line);
 }
 
@@ -63,16 +64,21 @@ char	*ft_get_line(char *save_line)
 	char	*s;
 
 	i = 0;
-	s = "";
-	if (!save_line)
+	// s = "";
+	if (!save_line[i])
 		return (NULL);
 	while (save_line[i] && save_line[i] != '\n')
 		i++;
-	s = (char *)malloc(sizeof(char) * (i + 1));
+	s = (char *)malloc(sizeof(char) * (i + 2));
 	if (!s)
 		return (NULL);
 	i = 0;
 	while (save_line[i] && save_line[i] != '\n')
+	{
+		s[i] = save_line[i];
+		i++;
+	}
+	if (save_line[i] == '\n')
 	{
 		s[i] = save_line[i];
 		i++;

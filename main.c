@@ -6,7 +6,7 @@
 /*   By: steh <steh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 20:34:52 by steh              #+#    #+#             */
-/*   Updated: 2022/02/24 16:37:01 by steh             ###   ########.fr       */
+/*   Updated: 2022/03/01 13:23:52 by steh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ int	main(void)
 {
 	char	*line;
 	int		i;
-	int		r;
+	// int		r;
 	int		fd1;
-	int		fd2;
-	int		fd3;
+	// int		fd2;
+	// int		fd3;
 	
 	fd1 = open("tests/test.txt", O_RDONLY);
 	// fd2 = open("tests/test2.txt", O_RDONLY);
@@ -41,6 +41,7 @@ int	main(void)
 	close(fd1);
 	// close(fd2);
 	// close(fd3);
+	system("leaks a.out");
 	return (0);
 }
 

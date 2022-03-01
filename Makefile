@@ -1,7 +1,10 @@
-NAME		:= get_next_line
-CC			:= gcc
-CFLAGS		:= -Wall -Werror -Wextra -c -g
-SRCS		= get_next_line.c
+NAME		:= get_next_line.a
+# CC			:= gcc
+# CFLAGS		:= -Wall -Werror -Wextra -c -g -fsanitize=address
+AR			= ar rcs
+RM			= rm -f
+SRCS		= get_next_line.c get_next_line_utils.c
+OBJS     	= ${SRCS:.c=.o}
 
 
 all			: $(NAME)
@@ -10,9 +13,13 @@ all			: $(NAME)
 GREEN		= \033[1;32m
 RED			= \033[1;31m
 
-$(NAME)		:
+# $(NAME)		:
+# 				@echo "$(GREEN) Compiling Files"
+# 				@$(CC) -o $(NAME) $(CFLAGS) $(SRCS)
+	
+$(NAME)		:   $(OBJS)
 				@echo "$(GREEN) Compiling Files"
-				@$(CC) -o $(NAME) $(CFLAGS) $(SRCS)
+				@$(AR) $(NAME) $(OBJS)
 
 test		:
 				gcc main.c -g get_next_line.c get_next_line_utils.c get_next_line.h && ./a.out
@@ -22,11 +29,11 @@ test2		:
 
 clean		:
 				@echo "$(RED) Temporary Files Deleted"
-				@rm -f $()
+				@$(RM) $(OBJS)
 
 fclean		: 	clean
 				@echo "$(RED) Execuatable Files Deleted"
-				@rm -f $(NAME)
+				@$(RM) $(NAME)
 
 re			: fclean all
 

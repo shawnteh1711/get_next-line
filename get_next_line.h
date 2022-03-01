@@ -6,7 +6,7 @@
 /*   By: steh <steh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 10:18:34 by steh              #+#    #+#             */
-/*   Updated: 2022/02/24 18:05:46 by steh             ###   ########.fr       */
+/*   Updated: 2022/03/01 17:39:21 by steh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,10 @@ size_t	ft_strlcat(char *dest, const char *src, size_t len);
 size_t	ft_strlcpy(char *dest, const char *src, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strchr(const char *str, int c);
+// size_t	ft_strlen(char *s);
+// size_t	ft_strlcat(char *dest, char *src, size_t len);
+// size_t	ft_strlcpy(char *dest, char *src, size_t len);
+// char	*ft_strjoin(char *s1, char *s2);
+// char	*ft_strchr(char *str, int c);
 
 # endif
