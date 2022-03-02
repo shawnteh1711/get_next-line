@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: steh <steh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 10:17:30 by steh              #+#    #+#             */
-/*   Updated: 2022/03/02 08:42:16 by steh             ###   ########.fr       */
+/*   Updated: 2022/03/02 10:04:05 by steh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*save_line;
+	static char	*save_line[257];
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 256)
 		return (0);
-	save_line = ft_read_and_save(fd, save_line);
-	if (!save_line)
+	save_line[fd] = ft_read_and_save(fd, save_line[fd]);
+	if (!save_line[fd])
 		return (NULL);
-	line = ft_get_line(save_line);
-	save_line = ft_save(save_line);
+	line = ft_get_line(save_line[fd]);
+	save_line[fd] = ft_save(save_line[fd]);
 	return (line);
 }
 
