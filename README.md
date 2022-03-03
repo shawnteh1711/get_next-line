@@ -1,5 +1,5 @@
 # get_next-line
-Piscine 42 get_next_line
+The objective of this project is to create a function called ```get_next_line``` which allow you to read content line by line from a file descriptor . Calling it in a loop will read one line at a time until the end of the text. 
 
 
 ## algorithms
