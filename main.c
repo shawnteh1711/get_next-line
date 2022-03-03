@@ -6,36 +6,48 @@
 /*   By: steh <steh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 20:34:52 by steh              #+#    #+#             */
-/*   Updated: 2022/03/02 14:29:25 by steh             ###   ########.fr       */
+/*   Updated: 2022/03/03 19:03:51 by steh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	main(void)
+void	read_line(int fd)
 {
 	char	*line;
 	int		i;
-	int		r;
-	int		fd1;
-	int		fd2;
 
-	fd1 = open("tests/test.txt", O_RDONLY);
-	fd2 = open("tests/test2.txt", O_RDONLY);
 	i = 1;
-	while (i <= 4)
+	line = (char *)1;
+	while (line != NULL)
 	{
-		line = get_next_line(fd1);
-		printf("line [%02d]: %s\n", i, line);
-		free(line);
-		line = get_next_line(fd2);
+		line = get_next_line(fd);
 		printf("line [%02d]: %s\n", i, line);
 		free(line);
 		i++;
 	}
+}
+
+int	main(int argc, char *argv[])
+{
+	int		r;
+	int		fd1;
+	int		fd2;
+
+	if (argc > 1)
+	{
+		fd1 = open(argv[1], O_RDONLY);
+		read_line(fd1);
+	}
+	else
+	{
+		fd1 = open("tests/test.txt", O_RDONLY);
+		fd2 = open("tests/test2.txt", O_RDONLY);
+		read_line(fd1);
+		read_line(fd2);
+	}
 	close(fd1);
 	close(fd2);
-	// system("leaks a.out");
 	return (0);
 }
 

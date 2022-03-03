@@ -6,7 +6,7 @@
 /*   By: steh <steh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 10:17:30 by steh              #+#    #+#             */
-/*   Updated: 2022/03/02 10:04:05 by steh             ###   ########.fr       */
+/*   Updated: 2022/03/03 19:14:14 by steh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*get_next_line(int fd)
 	if (!save_line[fd])
 		return (NULL);
 	line = ft_get_line(save_line[fd]);
-	save_line[fd] = ft_save(save_line[fd]);
+	save_line[fd] = ft_save_next_line(save_line[fd]);
 	return (line);
 }
 
@@ -84,7 +84,7 @@ char	*ft_get_line(char *save_line)
 	return (s);
 }
 
-char	*ft_save(char *save_line)
+char	*ft_save_next_line(char *save_line)
 {
 	int		i;
 	int		j;
