@@ -10,13 +10,13 @@ The objective of this project is to create a function called ```get_next_line```
 # Flow Chart
 ```mermaid
 flowchart TD
-   A[Pass fd to function] -- B{Is the save_line contain '\n' && read_bytes != 0};
-   B -- Yes -- C[Read and join save_line and buffer]
-   B -- No -- D[Return save_line]
-   C -- E[Get the first line until '\n' and save as line]
-   D -- E[Get the first line until '\n' and save as line]
-   E -- F[Get the next_line until '\n' and save as save_line]
-   F -- G[Return save_line]
+   A[Pass fd to function] --> B{Is the save_line contain '\n' && read_bytes != 0};
+   B -- Yes --> C[Read and join save_line and buffer];
+   B -- No --> D[Return save_line];
+   C --> E[Get the first line until '\n' and save as line];
+   D --> E[Get the first line until '\n' and save as line];
+   E --> F[Get the next_line until '\n' and save as save_line];
+   F --> G[Return save_line];
 ```
 
 
