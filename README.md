@@ -16,7 +16,7 @@ flowchart TD
    C --> E[Get the first line until newline and save as line];
    D --> E[Get the first line until newline and save as line];
    E --> F[Get the next_line until newline and save as save_line];
-   F --> G[Return save_line];
+   F --> G[Return line];
 ```
 
 
