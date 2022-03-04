@@ -6,7 +6,7 @@
 /*   By: steh <steh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 20:34:52 by steh              #+#    #+#             */
-/*   Updated: 2022/03/03 19:03:51 by steh             ###   ########.fr       */
+/*   Updated: 2022/03/04 10:11:46 by steh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,65 +16,73 @@ void	read_line(int fd)
 {
 	char	*line;
 	int		i;
+	int		r;
+	char	*buf;
+	int		bytes_read;
 
-	i = 1;
-	line = (char *)1;
-	while (line != NULL)
+	buf = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	bytes_read = read(fd, buf, BUFFER_SIZE);
+	while (bytes_read > 0)
 	{
 		line = get_next_line(fd);
 		printf("line [%02d]: %s\n", i, line);
 		free(line);
 		i++;
 	}
+	free(buf);
+	// i = 1;
+	// line = (char *)1;
+	// while (line != NULL)
+	// {
+	// 	line = get_next_line(fd);
+	// 	printf("line [%02d]: %s\n", i, line);
+	// 	free(line);
+	// 	i++;
+	// }
 }
 
 int	main(int argc, char *argv[])
 {
-	int		r;
-	int		fd1;
-	int		fd2;
+	char		*line;
+	int			fd1;
+	int			test_count;
+	int			fds[3];
+	int			i;
+	char const	*tests[5] = {
+		"tests/test.txt",
+		"tests/test2.txt",
+		"tests/test3.txt"
+	};
 
+	test_count = 3;
 	if (argc > 1)
 	{
 		fd1 = open(argv[1], O_RDONLY);
 		read_line(fd1);
+		if (argc > 2)
+		{
+			printf("Sorry, only accept one file to open");
+			return (-1);
+		}
+		close(fd1);
 	}
 	else
 	{
-		fd1 = open("tests/test.txt", O_RDONLY);
-		fd2 = open("tests/test2.txt", O_RDONLY);
-		read_line(fd1);
-		read_line(fd2);
+		i = 0;
+		while (i < test_count)
+		{
+			fds[i] = open(tests[i], O_RDONLY);
+			i++;
+		}
+		i = 0;
+		while (i < test_count)
+		{
+			read_line(fds[i]);
+			i++;
+		}
+		i = 0;
+		while (i < test_count)
+			close(fds[i++]);
 	}
-	close(fd1);
-	close(fd2);
 	return (0);
 }
-
-// void	ft_readi(int fd)
-// {
-// 	char	*line;
-// 	int		r;
-
-// 	while ((r = get_next_line(fd)) > 0)
-// 	{
-// 		line = get_next_line(fd);
-// 		printf("r = %d line : |%s|\n", r, line);
-// 		free(line);
-// 	}
-// 	printf("r = %d line : |%s|\n", r, line);
-// }
-
-// int		main(int ac, char **av)
-// {
-// 	int fd;
-
-// 	if (ac == 2)
-// 	{
-// 		fd = open(av[1], O_RDONLY);
-// 		ft_readi(fd);
-// 	}
-// 	else
-// 		ft_readi(0);
-// 	return (0);
-// }
