@@ -6,7 +6,7 @@
 /*   By: steh <steh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 10:17:30 by steh              #+#    #+#             */
-/*   Updated: 2022/03/03 19:13:05 by steh             ###   ########.fr       */
+/*   Updated: 2022/03/04 21:45:50 by steh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ char	*get_next_line(int fd)
 // keep reading while the char *save not find '\n' using strchr
 char	*ft_read_and_save(int fd, char *save_line)
 {
-	char	*buffer;
-	int		read_bytes;
+	char		*buffer;
+	ssize_t		read_bytes;
 
 	read_bytes = 1;
 	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
@@ -60,6 +60,7 @@ char	*ft_get_line(char *save_line)
 {
 	int		i;
 	char	*s;
+	char	*p;
 
 	i = 0;
 	if (!save_line[i])
@@ -69,6 +70,12 @@ char	*ft_get_line(char *save_line)
 	s = (char *)malloc(sizeof(char) * (i + 2));
 	if (!s)
 		return (NULL);
+	// p = ft_strchr(save_line, '\n');
+	// if (!p)
+	// 	return (NULL);
+	// i = p - save_line + 1;
+	// ft_strlcpy(s, save_line, i);
+	// s[i] = '\0';
 	i = 0;
 	while (save_line[i] && save_line[i] != '\n')
 	{

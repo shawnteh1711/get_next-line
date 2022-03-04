@@ -1,4 +1,4 @@
-NAME		:= get_next_line.a
+NAME		:= libget_next_line.a
 CC			:= gcc
 CFLAGS		:= -Wall -Werror -Wextra -c -g -fsanitize=address
 AR			= ar rcs
