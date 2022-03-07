@@ -1,6 +1,11 @@
 # get_next-line
 The objective of this project is to create a function called ```get_next_line``` which allow you to read content line by line from a file descriptor . Calling it in a loop will read one line at a time until the end of the text.
 
+
+# Terminology
+Screenshot 2022-03-07 at 09.25.14![image](https://user-images.githubusercontent.com/34572151/156952581-602a2200-2dd6-4296-a57f-d778de0b629b.png)
+Screenshot 2022-03-07 at 09.56.33![image](https://user-images.githubusercontent.com/34572151/156954897-acfcc434-8529-4ece-941e-5cc804359dbd.png)
+
 # Key Point
 - Functions open, read, close and buff size adaptation.
 - Static variables to save line.
@@ -27,3 +32,4 @@ flowchart TD
 
 ### Reference
 1. [geeksforgeeks](https://www.geeksforgeeks.org/input-output-system-calls-c-create-open-close-read-write)
+2. [/dev/tty](http://www.mit.edu/afs.new/athena/system/rhlinux/redhat-6.2-docs/HOWTOS/other-formats/html/Text-Terminal-HOWTO-html/Text-Terminal-HOWTO-6.html)
