@@ -33,3 +33,4 @@ flowchart TD
 ### Reference
 1. [geeksforgeeks](https://www.geeksforgeeks.org/input-output-system-calls-c-create-open-close-read-write)
 2. [/dev/tty](http://www.mit.edu/afs.new/athena/system/rhlinux/redhat-6.2-docs/HOWTOS/other-formats/html/Text-Terminal-HOWTO-html/Text-Terminal-HOWTO-6.html)
+3. [System Call](https://www.cs.princeton.edu/courses/archive/spring16/cos217/lectures/22_IoMgmt.pdf)
