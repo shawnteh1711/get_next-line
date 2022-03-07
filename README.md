@@ -3,8 +3,8 @@ The objective of this project is to create a function called ```get_next_line```
 
 
 # Terminology
-Screenshot 2022-03-07 at 09.25.14![image](https://user-images.githubusercontent.com/34572151/156952581-602a2200-2dd6-4296-a57f-d778de0b629b.png)
-Screenshot 2022-03-07 at 09.56.33![image](https://user-images.githubusercontent.com/34572151/156954897-acfcc434-8529-4ece-941e-5cc804359dbd.png)
+Terminology![image](https://user-images.githubusercontent.com/34572151/156952581-602a2200-2dd6-4296-a57f-d778de0b629b.png)
+/dev/tty![image](https://user-images.githubusercontent.com/34572151/156954897-acfcc434-8529-4ece-941e-5cc804359dbd.png)
 
 # Key Point
 - Functions open, read, close and buff size adaptation.
