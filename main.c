@@ -6,7 +6,7 @@
 /*   By: steh <steh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 20:34:52 by steh              #+#    #+#             */
-/*   Updated: 2022/03/04 21:38:58 by steh             ###   ########.fr       */
+/*   Updated: 2022/03/07 10:34:22 by steh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(int argc, char *argv[])
 {
 	char		*line;
 	int			fd;
-	int			j;
+	int			w_fd;
 	const char	*tests[] = {
 		"tests/test.txt",
 		"tests/test2.txt",
@@ -50,8 +50,15 @@ int	main(int argc, char *argv[])
 			printf("Sorry, only accept one file to open");
 			return (-1);
 		}
-		fd = open(argv[1], O_RDONLY);
+		fd = open(argv[1], O_RDWR);
+		if (fd < 0) 
+		{ 
+			perror("r1"); 
+			exit(1); 
+		} 
 		read_line(fd);
+		w_fd = write(fd, "\nhello\n", ft_strlen("\nhello\n"));
+		// printf("wd = %d\n", w_fd);
 		close(fd);
 	}
 	else
@@ -60,6 +67,11 @@ int	main(int argc, char *argv[])
 		{
 			printf("Now testing file %s:\n", tests[i]);
 			fd = open(tests[i], O_RDONLY);
+			if (fd < 0) 
+			{ 
+				perror("r1"); 
+				exit(1); 
+			} 
 			line = get_next_line(fd);
 			while (line != NULL)
 			{

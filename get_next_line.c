@@ -6,7 +6,7 @@
 /*   By: steh <steh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 10:17:30 by steh              #+#    #+#             */
-/*   Updated: 2022/03/04 21:45:50 by steh             ###   ########.fr       */
+/*   Updated: 2022/03/05 16:28:04 by steh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ char	*ft_get_line(char *save_line)
 {
 	int		i;
 	char	*s;
-	char	*p;
 
 	i = 0;
 	if (!save_line[i])
@@ -70,24 +69,10 @@ char	*ft_get_line(char *save_line)
 	s = (char *)malloc(sizeof(char) * (i + 2));
 	if (!s)
 		return (NULL);
-	// p = ft_strchr(save_line, '\n');
-	// if (!p)
-	// 	return (NULL);
-	// i = p - save_line + 1;
-	// ft_strlcpy(s, save_line, i);
-	// s[i] = '\0';
-	i = 0;
-	while (save_line[i] && save_line[i] != '\n')
-	{
-		s[i] = save_line[i];
-		i++;
-	}
+	ft_strlcpy(s, save_line, i + 1);
 	if (save_line[i] == '\n')
-	{
 		s[i] = save_line[i];
-		i++;
-	}
-	s[i] = '\0';
+	s[++i] = '\0';
 	return (s);
 }
 
