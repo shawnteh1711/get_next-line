@@ -6,7 +6,7 @@
 /*   By: steh <steh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 20:34:52 by steh              #+#    #+#             */
-/*   Updated: 2022/03/07 10:34:22 by steh             ###   ########.fr       */
+/*   Updated: 2022/10/01 21:51:12 by steh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	read_line(int fd)
 {
 	char		*line;
 	int			i;
-	char		*buf;
-	ssize_t		bytes_read;
+	// char		*buf;
+	// ssize_t		bytes_read;
 
 	i = 1;
 	line = "";
@@ -80,6 +80,7 @@ int	main(int argc, char *argv[])
 				line = get_next_line(fd);
 			}
 			printf("\n\n");
+			system("leaks a.out");
 			close(fd);
 		}
 	}

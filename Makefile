@@ -3,7 +3,7 @@ CC			:= gcc
 CFLAGS		:= -Wall -Werror -Wextra -c -g -fsanitize=address
 AR			= ar rcs
 RM			= rm -f
-SRCS		= get_next_line.c get_next_line_utils.c
+SRCS		= get_next_line.c get_next_line_utils.c main.c
 OBJS     	= ${SRCS:.c=.o}
 
 
@@ -21,7 +21,7 @@ $(NAME)		:   $(OBJS)
 				@echo "$(GREEN) Compiling Files"
 				@$(AR) $(NAME) $(OBJS)
 				@echo "(GREEN) Running Program"
-				@$(CC) main.c -g get_next_line.a && ./a.out
+				# @$(CC) main.c -g get_next_line.a && ./a.out
 
 test		:
 				gcc main.c -g get_next_line.c get_next_line_utils.c get_next_line.h && ./a.out
